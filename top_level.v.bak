@@ -1,0 +1,5 @@
+module top_level(seg0,clk);
+	input clk;
+	output seg0;
+	assign seg0 = 1;
+endmodule;

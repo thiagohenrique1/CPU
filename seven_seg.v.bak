@@ -1,0 +1,7 @@
+module seven_seg(seg, dig, num, clk);
+	output [7:0] seg;
+	output reg [3:0] dig;
+	num [15:0] data;
+	input clk;
+	
+endmodule

@@ -1,0 +1,2 @@
+module ir_decode(instruction_reg, rc, rb, ra, imm1, imm2, imm3);
+endmodule

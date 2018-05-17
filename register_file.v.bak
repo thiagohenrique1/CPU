@@ -1,0 +1,3 @@
+module register_bank(out1,out2,write,addr1,addr2,data_in)
+
+endmodule

@@ -1,0 +1,472 @@
+$date
+	Thu May 17 01:06:12 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module full_cpu_test $end
+$var wire 16 ! memory_addr [15:0] $end
+$var wire 16 " memory_out [15:0] $end
+$var wire 1 # memory_write $end
+$var reg 1 $ clk $end
+$var reg 16 % memory_in [15:0] $end
+$scope module cpu $end
+$var wire 1 & ALU_in2_mux $end
+$var wire 1 ' ALU_out_write $end
+$var wire 1 ( IR_write $end
+$var wire 2 ) PC_mux [1:0] $end
+$var wire 1 * PC_write $end
+$var wire 1 + clk $end
+$var wire 2 , data_in_mux [1:0] $end
+$var wire 1 - mem_out_mux $end
+$var wire 16 . memory_addr [15:0] $end
+$var wire 2 / memory_addr_mux [1:0] $end
+$var wire 16 0 memory_in [15:0] $end
+$var wire 16 1 memory_out [15:0] $end
+$var wire 1 # memory_write $end
+$var wire 5 2 opcode [4:0] $end
+$var wire 1 3 reg_buff1_write $end
+$var wire 1 4 reg_buff2_write $end
+$var wire 1 5 reg_write $end
+$var wire 16 6 status_reg [15:0] $end
+$var wire 1 7 status_reg_write $end
+$scope module control_unit $end
+$var wire 1 + clk $end
+$var wire 5 8 opcode [4:0] $end
+$var wire 16 9 status_reg [15:0] $end
+$var reg 1 : ALU_in2_mux $end
+$var reg 1 ; ALU_out_write $end
+$var reg 1 < IR_write $end
+$var reg 2 = PC_mux [1:0] $end
+$var reg 1 > PC_write $end
+$var reg 2 ? cycle [1:0] $end
+$var reg 2 @ data_in_mux [1:0] $end
+$var reg 1 A mem_out_mux $end
+$var reg 2 B memory_addr_mux [1:0] $end
+$var reg 1 C memory_write $end
+$var reg 1 D reg_buff1_write $end
+$var reg 1 E reg_buff2_write $end
+$var reg 1 F reg_write $end
+$var reg 1 G status_reg_write $end
+$scope task disable_write_signals $end
+$upscope $end
+$scope task zero_muxes $end
+$upscope $end
+$upscope $end
+$scope module datapath $end
+$var wire 16 H ALU_flags [15:0] $end
+$var wire 16 I ALU_in2 [15:0] $end
+$var wire 1 & ALU_in2_mux $end
+$var wire 3 J ALU_op [2:0] $end
+$var wire 16 K ALU_out [15:0] $end
+$var wire 1 ' ALU_out_write $end
+$var wire 1 ( IR_write $end
+$var wire 16 L PC_in_wire [15:0] $end
+$var wire 2 M PC_mux [1:0] $end
+$var wire 1 * PC_write $end
+$var wire 1 + clk $end
+$var wire 16 N data_in [15:0] $end
+$var wire 2 O data_in_mux [1:0] $end
+$var wire 11 P imm1 [10:0] $end
+$var wire 8 Q imm2 [7:0] $end
+$var wire 5 R imm3 [4:0] $end
+$var wire 1 - mem_out_mux $end
+$var wire 16 S memory_addr [15:0] $end
+$var wire 2 T memory_addr_mux [1:0] $end
+$var wire 16 U memory_in [15:0] $end
+$var wire 16 V memory_out [15:0] $end
+$var wire 5 W opcode [4:0] $end
+$var wire 3 X reg_addr1 [2:0] $end
+$var wire 3 Y reg_addr2 [2:0] $end
+$var wire 3 Z reg_addr_in [2:0] $end
+$var wire 16 [ reg_buff1 [15:0] $end
+$var wire 1 3 reg_buff1_write $end
+$var wire 16 \ reg_buff2 [15:0] $end
+$var wire 1 4 reg_buff2_write $end
+$var wire 1 5 reg_write $end
+$var wire 1 7 status_reg_write $end
+$var reg 16 ] ALU_out_buff [15:0] $end
+$var reg 16 ^ PC [15:0] $end
+$var reg 16 _ inst_reg [15:0] $end
+$var reg 16 ` status_reg [15:0] $end
+$scope module reg_file_mux $end
+$var wire 16 a in0 [15:0] $end
+$var wire 16 b in1 [15:0] $end
+$var wire 16 c in2 [15:0] $end
+$var wire 16 d in3 [15:0] $end
+$var wire 2 e select [1:0] $end
+$var reg 16 f out [15:0] $end
+$upscope $end
+$scope module registers $end
+$var wire 3 g addr1 [2:0] $end
+$var wire 3 h addr2 [2:0] $end
+$var wire 3 i addr_in [2:0] $end
+$var wire 1 + clk $end
+$var wire 16 j data_in [15:0] $end
+$var wire 1 5 write $end
+$var wire 1 3 write_buff1 $end
+$var wire 1 4 write_buff2 $end
+$var reg 16 k reg_buff1 [15:0] $end
+$var reg 16 l reg_buff2 [15:0] $end
+$upscope $end
+$scope module alu $end
+$var wire 16 m flags [15:0] $end
+$var wire 16 n in_a [15:0] $end
+$var wire 16 o in_b [15:0] $end
+$var wire 3 p op [2:0] $end
+$var reg 16 q out [15:0] $end
+$upscope $end
+$scope module ir_decode $end
+$var wire 3 r alu_op [2:0] $end
+$var wire 11 s imm1 [10:0] $end
+$var wire 8 t imm2 [7:0] $end
+$var wire 5 u imm3 [4:0] $end
+$var wire 16 v instruction_reg [15:0] $end
+$var wire 5 w opcode [4:0] $end
+$var wire 3 x ra [2:0] $end
+$var wire 3 y rb [2:0] $end
+$var wire 3 z rc [2:0] $end
+$var wire 3 { reg_addr1 [2:0] $end
+$var wire 3 | reg_addr2 [2:0] $end
+$var wire 3 } reg_addr_in [2:0] $end
+$upscope $end
+$scope module PC_mux2 $end
+$var wire 16 ~ in0 [15:0] $end
+$var wire 16 !" in1 [15:0] $end
+$var wire 16 "" in2 [15:0] $end
+$var wire 16 #" in3 [15:0] $end
+$var wire 2 $" select [1:0] $end
+$var reg 16 %" out [15:0] $end
+$upscope $end
+$scope module Memory_mux2 $end
+$var wire 16 &" in0 [15:0] $end
+$var wire 16 '" in1 [15:0] $end
+$var wire 16 (" in2 [15:0] $end
+$var wire 16 )" in3 [15:0] $end
+$var wire 2 *" select [1:0] $end
+$var reg 16 +" out [15:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1001 +"
+b0 *"
+bx )"
+b0xxxxxxxx ("
+bx '"
+b1001 &"
+b1010 %"
+b0 $"
+b0 #"
+bx ""
+b0xxxxxxxxxxx !"
+b1010 ~
+bx }
+bx |
+bx {
+bx z
+bx y
+bx x
+bx w
+bx v
+bx u
+bx t
+bx s
+bx r
+bx q
+bx p
+b0xxxxx o
+bx n
+bz m
+bx l
+bx k
+bx j
+bx i
+bx h
+bx g
+bx f
+b0 e
+b1001 d
+b0xxxxxxxx c
+b10110 b
+bx a
+bx `
+bx _
+b1001 ^
+bx ]
+bx \
+bx [
+bx Z
+bx Y
+bx X
+bx W
+bx V
+b10110 U
+b0 T
+b1001 S
+bx R
+bx Q
+bx P
+b0 O
+bx N
+b0 M
+b1010 L
+bx K
+bx J
+b0xxxxx I
+bz H
+0G
+0F
+0E
+0D
+0C
+b0 B
+0A
+b0 @
+b0 ?
+0>
+b0 =
+1<
+0;
+0:
+bx 9
+bx 8
+07
+bx 6
+05
+04
+03
+bx 2
+bx 1
+b10110 0
+b0 /
+b1001 .
+0-
+b0 ,
+0+
+0*
+b0 )
+1(
+0'
+0&
+b10110 %
+0$
+0#
+bx "
+b1001 !
+$end
+#10
+b10 X
+b10 g
+b10 {
+b0 I
+b0 o
+b0 J
+b0 p
+b0 r
+b0 Y
+b0 h
+b0 |
+b110 Z
+b110 i
+b110 }
+0<
+0(
+b110 x
+b10 y
+b0 z
+b10110 !"
+b10110 P
+b10110 s
+b10 ("
+b10 c
+b10 Q
+b10 t
+b0 R
+b0 u
+b0 2
+b0 8
+b0 W
+b0 w
+b1 ?
+b10110 _
+b10110 v
+1$
+1+
+#20
+0$
+0+
+#30
+b10 ?
+1$
+1+
+#40
+0$
+0+
+b1101001011100011 %
+b1101001011100011 0
+b1101001011100011 U
+b1101001011100011 b
+#50
+1<
+1(
+b0 ?
+1$
+1+
+#60
+0$
+0+
+#70
+b11 Z
+b11 i
+b11 }
+b100 X
+b100 g
+b100 {
+b11 Y
+b11 h
+b11 |
+b1011 I
+b1011 o
+b10 J
+b10 p
+b10 r
+b11 x
+b100 y
+b11 z
+b1011100011 !"
+b1011100011 P
+b1011100011 s
+b1011100 ("
+b1011100 c
+b1011100 Q
+b1011100 t
+b1011 R
+b1011 u
+b11010 2
+b11010 8
+b11010 W
+b11010 w
+0<
+0(
+b1101001011100011 _
+b1101001011100011 v
+b1 ?
+1$
+1+
+#80
+0$
+0+
+#90
+b10 ?
+1$
+1+
+#100
+0$
+0+
+#110
+1<
+1(
+b0 ?
+1$
+1+
+#120
+0$
+0+
+#130
+0<
+0(
+b1 ?
+1$
+1+
+#140
+0$
+0+
+#150
+b10 ?
+1$
+1+
+#160
+0$
+0+
+#170
+1<
+1(
+b0 ?
+1$
+1+
+#180
+0$
+0+
+#190
+0<
+0(
+b1 ?
+1$
+1+
+#200
+0$
+0+
+#210
+b10 ?
+1$
+1+
+#220
+0$
+0+
+#230
+1<
+1(
+b0 ?
+1$
+1+
+#240
+0$
+0+
+#250
+0<
+0(
+b1 ?
+1$
+1+
+#260
+0$
+0+
+#270
+b10 ?
+1$
+1+
+#280
+0$
+0+
+#290
+1<
+1(
+b0 ?
+1$
+1+
+#300
+0$
+0+
+#310
+0<
+0(
+b1 ?
+1$
+1+
+#320
+0$
+0+
+#330
+b10 ?
+1$
+1+
+#340
+0$
+0+

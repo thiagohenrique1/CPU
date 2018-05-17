@@ -1,0 +1,5 @@
+module baud_generator(clk, baud);
+	input clk;
+	output baud;
+	
+	

@@ -1,0 +1,479 @@
+$date
+	Sun May 13 10:03:44 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module cpu_tb $end
+$var wire 16 ! status_reg [15:0] $end
+$var wire 5 " opcode [4:0] $end
+$var wire 16 # memory_out [15:0] $end
+$var wire 16 $ memory_addr [15:0] $end
+$var reg 1 % ALU_in2_mux $end
+$var reg 1 & ALU_out_write $end
+$var reg 1 ' IR_write $end
+$var reg 2 ( PC_mux [1:0] $end
+$var reg 1 ) PC_write $end
+$var reg 1 * clk $end
+$var reg 2 + data_in_mux [1:0] $end
+$var reg 1 , mem_out_mux $end
+$var reg 2 - memory_addr_mux [1:0] $end
+$var reg 16 . memory_in [15:0] $end
+$var reg 1 / reg_buff1_write $end
+$var reg 1 0 reg_buff2_write $end
+$var reg 1 1 reg_write $end
+$var reg 1 2 status_reg_write $end
+$scope module cpu $end
+$var wire 16 3 ALU_flags [15:0] $end
+$var wire 1 % ALU_in2_mux $end
+$var wire 1 & ALU_out_write $end
+$var wire 1 ' IR_write $end
+$var wire 2 4 PC_mux [1:0] $end
+$var wire 1 ) PC_write $end
+$var wire 1 * clk $end
+$var wire 2 5 data_in_mux [1:0] $end
+$var wire 1 , mem_out_mux $end
+$var wire 2 6 memory_addr_mux [1:0] $end
+$var wire 16 7 memory_in [15:0] $end
+$var wire 1 / reg_buff1_write $end
+$var wire 1 0 reg_buff2_write $end
+$var wire 1 1 reg_write $end
+$var wire 1 2 status_reg_write $end
+$var wire 16 8 reg_buff2 [15:0] $end
+$var wire 16 9 reg_buff1 [15:0] $end
+$var wire 3 : reg_addr_in [2:0] $end
+$var wire 3 ; reg_addr2 [2:0] $end
+$var wire 3 < reg_addr1 [2:0] $end
+$var wire 5 = opcode [4:0] $end
+$var wire 16 > memory_out [15:0] $end
+$var wire 16 ? memory_addr [15:0] $end
+$var wire 5 @ imm3 [4:0] $end
+$var wire 8 A imm2 [7:0] $end
+$var wire 11 B imm1 [10:0] $end
+$var wire 16 C data_in [15:0] $end
+$var wire 16 D PC_in_wire [15:0] $end
+$var wire 16 E ALU_out [15:0] $end
+$var wire 3 F ALU_op [2:0] $end
+$var wire 16 G ALU_in2 [15:0] $end
+$var reg 16 H ALU_out_buff [15:0] $end
+$var reg 16 I PC [15:0] $end
+$var reg 16 J inst_reg [15:0] $end
+$var reg 16 K status_reg [15:0] $end
+$scope module Memory_mux2 $end
+$var wire 16 L in0 [15:0] $end
+$var wire 16 M in2 [15:0] $end
+$var wire 16 N in3 [15:0] $end
+$var wire 2 O select [1:0] $end
+$var wire 16 P in1 [15:0] $end
+$var reg 16 Q out [15:0] $end
+$upscope $end
+$scope module PC_mux2 $end
+$var wire 16 R in0 [15:0] $end
+$var wire 16 S in1 [15:0] $end
+$var wire 16 T in3 [15:0] $end
+$var wire 2 U select [1:0] $end
+$var wire 16 V in2 [15:0] $end
+$var reg 16 W out [15:0] $end
+$upscope $end
+$scope module alu $end
+$var wire 16 X flags [15:0] $end
+$var wire 16 Y in_b [15:0] $end
+$var wire 3 Z op [2:0] $end
+$var wire 16 [ in_a [15:0] $end
+$var reg 16 \ out [15:0] $end
+$upscope $end
+$scope module ir_decode $end
+$var wire 16 ] instruction_reg [15:0] $end
+$var wire 3 ^ reg_addr_in [2:0] $end
+$var wire 3 _ reg_addr2 [2:0] $end
+$var wire 3 ` reg_addr1 [2:0] $end
+$var wire 3 a rc [2:0] $end
+$var wire 3 b rb [2:0] $end
+$var wire 3 c ra [2:0] $end
+$var wire 5 d opcode [4:0] $end
+$var wire 5 e imm3 [4:0] $end
+$var wire 8 f imm2 [7:0] $end
+$var wire 11 g imm1 [10:0] $end
+$var wire 3 h alu_op [2:0] $end
+$upscope $end
+$scope module reg_file_mux $end
+$var wire 16 i in0 [15:0] $end
+$var wire 16 j in1 [15:0] $end
+$var wire 16 k in2 [15:0] $end
+$var wire 16 l in3 [15:0] $end
+$var wire 2 m select [1:0] $end
+$var reg 16 n out [15:0] $end
+$upscope $end
+$scope module registers $end
+$var wire 3 o addr1 [2:0] $end
+$var wire 3 p addr2 [2:0] $end
+$var wire 3 q addr_in [2:0] $end
+$var wire 1 * clk $end
+$var wire 16 r data_in [15:0] $end
+$var wire 1 1 write $end
+$var wire 1 / write_buff1 $end
+$var wire 1 0 write_buff2 $end
+$var reg 16 s reg_buff1 [15:0] $end
+$var reg 16 t reg_buff2 [15:0] $end
+$upscope $end
+$upscope $end
+$scope task clock $end
+$upscope $end
+$scope task dont_write $end
+$upscope $end
+$scope task load_ir $end
+$var reg 16 u inst [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx u
+bx t
+bx s
+bx r
+bx q
+bx p
+bx o
+bx n
+bx m
+bx l
+b0xxxxxxxx k
+bx j
+bx i
+bx h
+bx g
+bx f
+bx e
+bx d
+bx c
+bx b
+bx a
+bx `
+bx _
+bx ^
+bx ]
+bx \
+bx [
+bx Z
+bx Y
+bz X
+bx W
+bx V
+bx U
+b0 T
+b0xxxxxxxxxxx S
+bx R
+bx Q
+bx P
+bx O
+bx N
+b0xxxxxxxx M
+bx L
+bx K
+bx J
+bx I
+bx H
+bx G
+bx F
+bx E
+bx D
+bx C
+bx B
+bx A
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+bx :
+bx 9
+bx 8
+bx 7
+bx 6
+bx 5
+bx 4
+bz 3
+02
+01
+00
+0/
+bx .
+bx -
+x,
+bx +
+1*
+0)
+bx (
+0'
+0&
+x%
+bx $
+bx #
+bx "
+bx !
+$end
+#10
+0*
+1'
+b1111000001011001 .
+b1111000001011001 7
+b1111000001011001 j
+b1111000001011001 u
+#20
+b11 <
+b11 `
+b11 o
+b110 F
+b110 Z
+b110 h
+b1 ;
+b1 _
+b1 p
+b1 :
+b1 ^
+b1 q
+b1 c
+b11 b
+b1 a
+b1011001 S
+b1011001 B
+b1011001 g
+b1011 M
+b1011 k
+b1011 A
+b1011 f
+b1 @
+b1 e
+b11110 "
+b11110 =
+b11110 d
+b1111000001011001 J
+b1111000001011001 ]
+1*
+#30
+b1011 C
+b1011 n
+b1011 r
+0*
+11
+b10 +
+b10 5
+b10 m
+0'
+#40
+1*
+#50
+0*
+1'
+b1110100000010001 .
+b1110100000010001 7
+b1110100000010001 j
+b1110100000010001 u
+01
+#60
+b1 <
+b1 `
+b1 o
+b0 ;
+b0 _
+b0 p
+b10 C
+b10 n
+b10 r
+b101 F
+b101 Z
+b101 h
+b10 b
+b0 a
+b10001 S
+b10001 B
+b10001 g
+b10 M
+b10 k
+b10 A
+b10 f
+b0 @
+b0 e
+b11101 "
+b11101 =
+b11101 d
+b1110100000010001 J
+b1110100000010001 ]
+1*
+#70
+0*
+1/
+0'
+#80
+b1011 9
+b1011 P
+b1011 V
+b1011 [
+b1011 s
+1*
+#90
+0*
+1'
+b1111000000100011 .
+b1111000000100011 7
+b1111000000100011 j
+b1111000000100011 u
+0/
+#100
+b100 <
+b100 `
+b100 o
+b11 :
+b11 ^
+b11 q
+b100 C
+b100 n
+b100 r
+b110 F
+b110 Z
+b110 h
+b11 c
+b100 b
+b100011 S
+b100011 B
+b100011 g
+b100 M
+b100 k
+b100 A
+b100 f
+b11110 "
+b11110 =
+b11110 d
+b1111000000100011 J
+b1111000000100011 ]
+1*
+#110
+0*
+11
+0'
+#120
+1*
+#130
+0*
+1'
+b1110100000010011 .
+b1110100000010011 7
+b1110100000010011 j
+b1110100000010011 u
+01
+#140
+b11 <
+b11 `
+b11 o
+b10 C
+b10 n
+b10 r
+b101 F
+b101 Z
+b101 h
+b10 b
+b10011 S
+b10011 B
+b10011 g
+b10 M
+b10 k
+b10 A
+b10 f
+b11101 "
+b11101 =
+b11101 d
+b1110100000010011 J
+b1110100000010011 ]
+1*
+#150
+0*
+1/
+0'
+#160
+b100 9
+b100 P
+b100 V
+b100 [
+b100 s
+1*
+#170
+0*
+1'
+b11001000 .
+b11001000 7
+b11001000 j
+b11001000 u
+0/
+#180
+b1 <
+b1 `
+b1 o
+b0 :
+b0 ^
+b0 q
+b11 ;
+b11 _
+b11 p
+b11001 C
+b11001 n
+b11001 r
+b0 F
+b0 Z
+b0 h
+b0 c
+b1 b
+b11 a
+b11001000 S
+b11001000 B
+b11001000 g
+b11001 M
+b11001 k
+b11001 A
+b11001 f
+b11 @
+b11 e
+b0 "
+b0 =
+b0 d
+b11001000 J
+b11001000 ]
+1*
+#190
+0*
+1%
+10
+1/
+0'
+#200
+b1111 E
+b1111 \
+b100 G
+b100 Y
+b0xxxx #
+b0xxxx >
+b100 8
+b100 t
+b1011 9
+b1011 P
+b1011 V
+b1011 [
+b1011 s
+1*
+#210
+0*
+1&
+0/
+00
+#220
+b1111 H
+b1111 N
+b1111 i
+1*
+#230
+0&
+#250

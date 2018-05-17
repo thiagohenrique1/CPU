@@ -1,0 +1,10 @@
+parameter op_size = 3;
+module ALU(out,flags,op,in_a,in_b);
+	output out[WORD_SIZE-1:0];
+	output flags[WORD_SIZE-1:0];
+	input op[op_size-1:0]
+	input in_a[WORD_SIZE-1:0];
+	input in_B[WORD_SIZE-1:0];
+	
+	
+endmodule

@@ -1,3 +1,0 @@
-module debouncer(seg, dig, data, clk);
-
-endmodule

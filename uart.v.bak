@@ -1,4 +1,0 @@
-module uart(clk, rx, tx, data);
-	input clk, rk;
-	output tx;
-	output reg [15:0] data;

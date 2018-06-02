@@ -1,4 +1,4 @@
-//`include "CPU.v"
+`include "CPU.v"
 
 module cpu_tb;
 	parameter WORD_SIZE = 16, ALU_OP_SIZE = 3, REG_ADDR_SIZE = 3;

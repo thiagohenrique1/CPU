@@ -8,7 +8,7 @@ module register_file(reg_buff1, reg_buff2, write, addr1, addr2, addr_in,
 	input [2:0] addr1, addr2, addr_in;
 	input [WORD_SIZE-1:0] data_in;
 	
-	reg [WORD_SIZE-1:0] reg_file[REG_NUM:0];
+	reg [WORD_SIZE-1:0] reg_file[REG_NUM-1:0];
 	
 	always@(posedge clk) begin
 		if(write_buff1)
@@ -20,5 +20,4 @@ module register_file(reg_buff1, reg_buff2, write, addr1, addr2, addr_in,
 	always@(posedge clk) begin
 		if(write) reg_file[addr_in] = data_in;
 	end
-	
 endmodule

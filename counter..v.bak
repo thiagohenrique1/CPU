@@ -1,8 +1,0 @@
-module counter(count, in);
-	output reg [3:0] count;
-	
-	always@(posedge in) begin
-		count = count + 1;
-	end
-
-endmodule

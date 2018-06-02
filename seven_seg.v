@@ -19,8 +19,8 @@ module seven_seg(clk, seg, dig, data);
 		endcase
 	end
 	
+	reg [3:0] curr_dig;
 	always@(posedge clk) begin
-		reg [3:0] curr_dig;
 		case (dig_select)
 			2'd0: curr_dig = data[3:0];
 			2'd1: curr_dig = data[7:4];

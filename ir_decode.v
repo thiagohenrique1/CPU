@@ -1,10 +1,10 @@
 module ir_decode(instruction_reg, reg_addr2, reg_addr1, reg_addr_in,
 					  imm1, imm2, imm3, alu_op, opcode);
-	
-	parameter WORD_SIZE = 16, REG_ADDR_SIZE = 3, ALU_OP_SIZE = 3;
+	`include "parameters.v"
 	
 	input [WORD_SIZE-1:0] instruction_reg;
-	output [REG_ADDR_SIZE-1:0] reg_addr1, reg_addr2, reg_addr_in;
+	output [REG_ADDR_SIZE-1:0] reg_addr1, reg_addr_in;
+	output reg [REG_ADDR_SIZE-1:0] reg_addr2;
 	output [10:0] imm1;
 	output [7:0] imm2;
 	output [4:0] imm3;
@@ -19,16 +19,21 @@ module ir_decode(instruction_reg, reg_addr2, reg_addr1, reg_addr_in,
 	assign imm2 = instruction_reg[10:3];
 	assign imm3 = instruction_reg[10:6];
 	assign opcode = instruction_reg[15:11];
-	assign alu_op = opcode[2:0];
+	
+	
+	assign alu_op = (opcode == load_r || opcode == store_r) ? 3'b000 : opcode[2:0];
 	
 //	Link register addr
 	parameter lr = 3'b111;
 	
-	parameter br_op = 5'b11111, store_op = 5'b11101,
-				 store_r_op = 5'b11001, bl_op = 5'b10100;
+	assign reg_addr1 = (opcode == br || opcode == store || opcode == cmp || opcode == cmpi) ? ra : rb;
 	
-	assign reg_addr1 = (opcode == br_op || opcode == store_op) ? ra : rb;
-	assign reg_addr2 = (opcode == store_r_op) ? ra : rc;
-	assign reg_addr_in = (opcode == bl_op) ? lr : ra;
+	always@(*) begin
+		if(opcode == store_r) reg_addr2 = ra;
+		else if(opcode == cmp) reg_addr2 = rb;
+		else reg_addr2 = rc;
+	end
+	
+	assign reg_addr_in = (opcode == bl) ? lr : ra;
 	
 endmodule

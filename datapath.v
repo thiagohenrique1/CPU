@@ -6,12 +6,12 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 	
 	parameter WORD_SIZE = 16, ALU_OP_SIZE = 3, REG_ADDR_SIZE = 3;
 	
-// Clock
+// Clock and reset
 	input clk;
 	
 //	Mux select
-	input ALU_in2_mux, mem_out_mux;
-	input [1:0] PC_mux, memory_addr_mux, data_in_mux;
+	input mem_out_mux;
+	input [1:0] ALU_in2_mux, PC_mux, memory_addr_mux, data_in_mux;
 	
 //	Register write
 	input reg_buff1_write, reg_buff2_write, status_reg_write, ALU_out_write;
@@ -36,6 +36,8 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 	wire [10:0] imm1;
 	wire [7:0] imm2;
 	wire [4:0] imm3;
+	
+	assign debug = inst_reg;
 
 //	Register file and mux
 	mux2 reg_file_mux(data_in, data_in_mux, ALU_out_buff, memory_in, imm2, PC);
@@ -45,7 +47,8 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 //	ALU, input mux and buffers
 	ALU alu(ALU_out, ALU_flags, ALU_op, reg_buff1, ALU_in2);
 	
-	assign ALU_in2 = ALU_in2_mux ? reg_buff2 : imm3;
+	//assign ALU_in2 = ALU_in2_mux ? reg_buff2 : imm3;
+	mux2 ALU_mux(ALU_in2, ALU_in2_mux, reg_buff2, imm3, imm2, 0);
 	
 	always@(posedge clk) if(ALU_out_write) ALU_out_buff <= ALU_out;
 	always@(posedge clk) if(status_reg_write) status_reg <= ALU_flags;
@@ -58,15 +61,12 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 	
 //	PC mux and input
 	mux2 PC_mux2(PC_in_wire, PC_mux, PC+1, imm1, reg_buff1, 0);
-	
 	always@(posedge clk) if(PC_write) PC <= PC_in_wire;
 	
 //	Memory addr and output mux
 	mux2 Memory_mux2(memory_addr, memory_addr_mux, PC, reg_buff1, imm2, ALU_out_buff);
 	assign memory_out = (mem_out_mux) ? reg_buff1 : reg_buff2;
 	
-	initial begin
-		PC = 4'b1001;
-	end
+	initial PC = 0;
 	
 endmodule

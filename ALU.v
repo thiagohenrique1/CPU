@@ -17,7 +17,12 @@ module ALU(out, flags, op, in_a, in_b);
 			3'b100: out = in_a | in_b;
 			3'b101: out = in_a ^ in_b;
 			3'b110: out = in_a * in_b;
-			3'b111: out = in_a / in_b;
+			3'b111: out = in_a >> in_b;
 		endcase
 	end
+	
+	assign flags[WORD_SIZE-1:3] = 0;
+	assign flags[0] = (in_a == in_b);
+	assign flags[1] = (in_a >= in_b);
+	assign flags[2] = (out == 0);
 endmodule

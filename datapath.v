@@ -36,8 +36,6 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 	wire [10:0] imm1;
 	wire [7:0] imm2;
 	wire [4:0] imm3;
-	
-	assign debug = inst_reg;
 
 //	Register file and mux
 	mux2 reg_file_mux(data_in, data_in_mux, ALU_out_buff, memory_in, imm2, PC);

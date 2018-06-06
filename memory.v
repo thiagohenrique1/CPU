@@ -1,21 +1,38 @@
 module memory(clk, data_in, data_out, addr, write,
-				  out1, out2, in1);
-	parameter WORD_SIZE = 16, MEMORY_SIZE = 50;
-	input clk, write;
-	input [WORD_SIZE-1:0] data_in, addr, in1;
-	output [WORD_SIZE-1:0] data_out, out1, out2;
+				  out1, out2, in1, out_uart, send_uart, in_uart, uart_new_data);
+	parameter WORD_SIZE = 16, MEMORY_SIZE = 60;
+	parameter sev_seg_addr = 59, led_addr = 58, bt_addr = 57;
+	parameter out_uart_addr = 56, send_uart_addr = 55, in_uart_addr = 54, uart_new_data_addr = 53;
 	
+	input clk, write, uart_new_data;
+	input [WORD_SIZE-1:0] data_in, addr, in1;
+	input [7:0] in_uart;
+	output [WORD_SIZE-1:0] data_out, out1, out2;
+	output [7:0] out_uart;
+	output send_uart;
+	
+	reg uart_new_data_prev;
 	reg [WORD_SIZE-1:0] memory_data[MEMORY_SIZE-1:0];
 	
 	always @(posedge clk) begin
-		if(write) memory_data[addr] <= data_in;
-		memory_data[47] = in1;
+		if(write && addr > 16'h1C) memory_data[addr] <= data_in;
+		
+//		Put button value on memory
+		memory_data[bt_addr] = in1;
+		
+//		Put new uart data on memory and set flag
+		if(~uart_new_data_prev && uart_new_data) memory_data[uart_new_data_addr] = 1;
+		else if(addr == in_uart_addr) memory_data[uart_new_data_addr] = 0;
+		if(memory_data[uart_new_data_addr]) memory_data[in_uart_addr] = in_uart;
+		uart_new_data_prev = uart_new_data;
 	end
 	
 	assign data_out = memory_data[addr];
 	
-	assign out1 = memory_data[49];
-	assign out2 = memory_data[48];
+	assign out1 = memory_data[sev_seg_addr];
+	assign out2 = memory_data[led_addr];
+	//assign out_uart = memory_data[46][7:0];
+	//assign send_uart = (memory_data[45] > 0);
 	
 
 	integer i;

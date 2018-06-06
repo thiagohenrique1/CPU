@@ -1,9 +1,9 @@
 module debouncer(out, in, clk);
-	input [3:0] in;
+	input [4:0] in;
 	input clk;
-	output reg [3:0] out;
+	output reg [4:0] out;
 	
-	reg [3:0] prev;
+	reg [4:0] prev;
 	reg [6:0] count;
 
 	always@(posedge clk) begin

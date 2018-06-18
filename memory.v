@@ -1,21 +1,19 @@
 module memory(clk, data_in, data_out, addr, write,
-				  out1, out2, in1, out_uart, send_uart, in_uart, uart_new_data);
+				  out1, out2, in1, in_uart, uart_new_data);
 	parameter WORD_SIZE = 16, MEMORY_SIZE = 128;
 	parameter sev_seg_addr = 127, led_addr = 126, bt_addr = 125;
-	parameter out_uart_addr = 124, send_uart_addr = 123, in_uart_addr = 122, uart_new_data_addr = 121;
+	parameter in_uart_addr = 122, uart_new_data_addr = 121;
 	
 	input clk, write, uart_new_data;
 	input [WORD_SIZE-1:0] data_in, addr, in1;
 	input [7:0] in_uart;
 	output [WORD_SIZE-1:0] data_out, out1, out2;
-	output [7:0] out_uart;
-	output send_uart;
 	
 	reg uart_new_data_prev;
 	reg [WORD_SIZE-1:0] memory_data[MEMORY_SIZE-1:0];
 	
 	always @(posedge clk) begin
-		if(write && addr > 16'h18) memory_data[addr] <= data_in;
+		if(write && addr > 16'h20) memory_data[addr] <= data_in;
 		
 //		Put button value on memory
 		memory_data[bt_addr] = in1;

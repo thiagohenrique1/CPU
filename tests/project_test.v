@@ -12,17 +12,17 @@ module project_test;
 	project project1(led, seg, dig, bt, clk, rx, tx, reset);
 	
 	initial begin
-		$dumpfile("dump_project.vcd");
+		$dumpfile("cpu_project.vcd");
 		$dumpvars;
 		
 		for (i = 0; i < 8; i = i + 1)
 			$dumpvars(0, project_test.project1.cpu.datapath.registers.reg_file[i]);
 		
-		force project_test.project1.in1 = 5;
+		force project_test.project1.in1 = 6;
 		
 		clk = 0;
 		
-		#15000 $finish;
+		#150000 $finish;
 	end
 
 	always #20 clk = ~clk;

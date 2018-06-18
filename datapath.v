@@ -6,7 +6,7 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 	
 	parameter WORD_SIZE = 16, ALU_OP_SIZE = 3, REG_ADDR_SIZE = 3;
 	
-// Clock and reset
+//	Clock and reset
 	input clk;
 	
 //	Mux select
@@ -28,7 +28,7 @@ module datapath(clk, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mux, data_in_
 //	Registers
 	reg [WORD_SIZE-1:0] ALU_out_buff, PC, inst_reg;
 	
-// Wires
+//	Wires
 	wire [WORD_SIZE-1:0] ALU_out, ALU_flags, ALU_in2, PC_in_wire;
 	wire [WORD_SIZE-1:0] reg_buff1, reg_buff2, data_in;
 	wire [REG_ADDR_SIZE-1:0] reg_addr1, reg_addr2, reg_addr_in;

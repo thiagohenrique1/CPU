@@ -3,7 +3,7 @@ module control_unit(clk, reset, ALU_in2_mux, mem_out_mux, PC_mux, memory_addr_mu
 						  reg_write, PC_write, IR_write, memory_write, opcode, status_reg);
 	`include "parameters.v"
 	
-// Inputs
+//	Inputs
 	input clk, reset;
 	input [4:0] opcode;
 	input [WORD_SIZE-1:0] status_reg;
